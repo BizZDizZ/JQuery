@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popUp</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        $(document).ready(function(){
+            popup('.btn1', '.popup1');
+            popup('.btn2', '.popup2');
+
+            function popup(a, b){/* a = 클릭할 버튼 , b = 보여지는 부분 */
+                $(a).click(function(){
+                    $(b).addClass('active');
+                    $('body').css('overflow', 'hidden');
+                });
+                $(b + ' .close').click(function(){
+                    $(b).removeClass('active');
+                });
+            }
+        });
+    </script>
+    <style>
+        body{height: 2000px;}
+        .material-icons-outlined{font-family: 'Material Icons';}
+        [class ^= 'popup']{position: fixed; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none; justify-content: center; align-items: center;
+        }
+        [class ^= 'popup'].active{display: flex;}
+        [class ^= 'popup'] div{
+            width: 50%; height: 50%; background-color: white;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 30px; position: relative;
+        }
+        [class ^= 'popup'] div .close{
+            position: absolute; right: 0; top: -45px;
+            font-size: 50px; color: white; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn1">첫번째 popUp</button>
+    <div class="popup1">
+        <div>
+            첫번째
+            <span class="material-icons-outlined close">
+                close
+            </span>
+        </div>
+    </div>
+    <button class="btn2">두번째 popUp</button>
+    <div class="popup2 test2">
+        <div>
+            두번째
+            <span class="material-icons-outlined close">
+                close
+            </span>
+        </div>
+    </div>
+</body>
+</html>

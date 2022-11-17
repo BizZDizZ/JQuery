@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 탐색 - filter</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            // $('h3:even').css({
+            //     backgroundColor: 'black',
+            //     color: 'white',
+            // })
+            // $('h3').filter(':nth-child(1)').css({
+            //     backgroundColor: 'black',
+            //     color: 'white',
+            // })
+            // $('h3').last().css({
+            //     backgroundColor: 'red',
+            //     color: 'blue'
+            // })
+            // $('h3').eq(-3).css({
+            //     backgroundColor: 'red',
+            //     color: 'blue'
+            // })
+            $('h3').click(function(){
+                $('h3').eq($(this).index()).css('color', 'blue');
+            });
+        });
+    </script>
+</head>
+<body>    
+    <h3>header-0</h3>
+    <h3 class="test">header-1</h3>
+    <h3>header-2</h3>
+    <h3>header-3</h3>
+    <h3>header-4</h3>
+    <h3>header-5</h3>
+    <h3>header-6</h3>
+    <h3>header-7</h3>
+    <h3>header-8</h3>
+    <h3>header-9</h3>
+</body>
+</html>

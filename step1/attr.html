@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('.wrap ul li').click(function(){
+                $('.wrap ul li').removeClass('active');
+                $(this).addClass('active');
+                $('.wrap ol li').removeClass('active');
+                $('#' + $(this).attr('data-tab')).addClass('active');
+            });
+            // attr -> 속성 
+        });
+    </script>
+    <style>
+        .wrap ul,ol{
+            margin: 0; padding: 0; list-style: none;
+        }
+        .wrap{
+            max-width: 1000px;
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .wrap ul{
+            display: flex;
+        }
+        .wrap ul li{
+            flex: 1;
+            /* flex: grow 1;
+            flex-shrink: 1;
+            flex-basis: 1;
+            */
+            padding: 30px 50px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        .wrap ul li.active{
+            background-color: brown;
+            color: beige;
+        }
+        .wrap ol{
+            border: 1px solid #333;
+        }
+        .wrap ol li{
+            display: none;
+            height: 300px;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        .wrap ol li.active{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li data-tab="tab0" class="active">button1</li>
+            <li data-tab="tab1">button2</li>
+            <li data-tab="tab2">button3</li>
+            <li data-tab="tab3">button4</li>
+        </ul>
+        <ol>
+            <li id="tab0"class="active">content0</li>
+            <li id="tab1">content1</li>
+            <li id="tab2">content2</li>
+            <li id="tab3">content3</li>
+        </ol>
+    </div>
+</body>
+</html>

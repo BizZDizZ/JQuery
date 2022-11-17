@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attr 문서객체</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        /*
+            attr() 메서드 문법
+
+            case1.
+                $(selector).attr(name, value);
+                ex ->
+                $('img').attr('width', 200); //attr에 width 속성 200값 추가
+
+            case2.
+                $(selector).attr(name function(index, attr){});
+                ex ->
+                $('img').attr('width', function(index){
+                    //callback함수로 width의 value를 index 번호에 1씩 증가시킨후 100을 곱하여 다른값이 삽입되도록 함
+                    return (index + 1) * 100;
+                })
+
+            case3.
+                $(selector).attr(object);
+                ex ->
+                $('img').attr({
+                    width: function(index){
+                        return (index + 1) * 100;
+                    }
+                })
+
+            case4.
+                removeAttr()
+                removeAttr(name)
+                ex ->
+                $('h1').removeAttr('data-tab'); //지정된 속성값을 삭제
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

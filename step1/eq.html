@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            // $('.wrap ul li').click(function(){
+            //     $('.wrap ul li').removeClass('active');
+            //     $(this).addClass('active');
+            //     // console.log($(this).index());
+            //     $('wrap ol li').removeClass('active');
+            //     $('wrap ol li').eq($(this).index()).addClass('active');
+            // });
+
+            // $('.wrap ul li a').click(function(e){
+            //     e.preventDefault();
+            // })
+            // attr -> 속성
+            $('.wrap ul li').click(function(){
+                $('.wrap ul li').removeClass('active');
+                $('this').show();
+            });
+        });
+    </script>
+    <style>
+        .wrap ul,ol{
+            margin: 0; padding: 0; list-style: none;
+        }
+        .wrap{
+            max-width: 1000px;
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .wrap ul{
+            display: flex;
+        }
+        .wrap ul li{
+            flex: 1;
+            /* flex: grow 1;
+            flex-shrink: 1;
+            flex-basis: 1;
+            */
+            padding: 30px 50px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        .wrap ul li.active{
+            background-color: brown;
+            color: beige;
+        }
+        .wrap ol{
+            border: 1px solid #333;
+        }
+        .wrap ol li{
+            display: none;
+            height: 300px;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        .wrap ol li.active{
+            display: flex;
+        }
+
+        /* 
+            종류
+            1. show() 보여주기
+            2. hide() 감추기 -> display : none;
+            3. toggle() show and hide 를 번갈아가며
+            4. fadeIn() 문서객체를 점점 선명하게
+            5. fadeOut() 문서객체를 점점 흐리게
+            6. fadeToggle() fade를 toggle로 
+            사용형태
+            1. $(selector).method();
+            2. $(selector).method(speed);
+        */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li class="active"><a href="#tab01">button1</a></li>
+            <li><a href="#tab02">button2</a></li>
+            <li><a href="#tab03">button3</a></li>
+            <li><a href="#tab04">button4</a></li>
+        </ul>
+        <ol>
+            <li class="active" id="#tab01">content0</li>
+            <li id="#tab02">content1</li>
+            <li id="#tab03">content2</li>
+            <li id="#tab04">content3</li>
+        </ol>
+    </div>
+</body>
+</html>

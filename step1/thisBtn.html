@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thisBtn</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <style>
+        .wrap{
+            height: 100vh;
+        }
+        .wrap ul{
+            height: 100%;
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        .wrap ul li{
+            padding: 30px 50px;
+            border: 1px solid #333;
+        }
+        .wrap ul li.active{
+            background-color: slateblue;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // $('wrap ul li:nth-child(1)').click(function(){
+            //     $('wrap ul li:nth-child(1)').toggleClass('active');
+            // });
+            // $('wrap ul li:nth-child(2)').click(function(){
+            //     $('wrap ul li:nth-child(2)').toggleClass('active');
+            // });
+            // $('wrap ul li:nth-child(3)').click(function(){
+            //     $('wrap ul li:nth-child(3)').toggleClass('active');
+            // });
+            // $('wrap ul li:nth-child(4)').click(function(){
+            //     $('wrap ul li:nth-child(4)').toggleClass('active');
+            // });
+            $('.wrap ul li').click(function(){
+                $('.wrap ul li').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li>button1</li>
+            <li>button2</li>
+            <li>button3</li>
+            <li>button4</li>
+        </ul>
+    </div>
+</body>
+</html>

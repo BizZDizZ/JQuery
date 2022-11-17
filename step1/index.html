@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 기초이론</title>
+    <script src="js/jQuery.js"></script>
+    <!-- 또는 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
+    <script>
+        // $(document).ready(function(){
+        //     // $('h1').css('color','red');
+        //     // $('ul').css('background-color','blue');
+        //     // $('ul li:nth-child(2)').css('color','purple');
+        //     // $('h3').html('ㅎㅇ');
+        //     // $('#test').css('background-color','black');
+        //     $('h4').click(function(){
+        //         $('ul').addClass('active');
+        //     });
+        // })
+        $(document).ready(function(){
+            // $('.test1').addClass('active');
+            // $('.test1').removeClass('active');
+            $('.test1').click(function(){
+                if($('.test1').hasClass('active')){
+                    $('.test1').removeClass('active');
+                }else{
+                    $('.test1').addClass('active');
+                }
+            });
+            // $('선택자').click()
+            //     $('선택자').addClass('클래스명')
+            //         선택자에게 class('클래스명') 추가
+
+            //         $('선택자').removeClass('클래스명')
+            //         선택자에게 class('클래스명') 제거
+
+            //         $('선택자').hasClass('클래스명')
+            //         선택자가 Class('클래스명') 를 가지고 있으면 true,
+            //         선택자가 Class('클래스명') 를 가지고 있지 않으면 false
+
+            //         $('선택자').toggleClass('클래스명')
+            //         선택자가 Class('클래스명') 를 가지고 있으면 class('클래스명')제거,
+            //         선택자가 Class('클래스명') 를 가지고 있지 않으면 class('클래스명')추가
+
+            //         $('선택자').eq('순서')
+            //         선택자가 여러개 라면 해당 인덱스('숫자')번째 선택자를 선택
+
+            //         preventDefault() - 기본이벤트제거
+            //         기본값 방지
+        });
+    </script>
+    <style>
+        /* ul {width: 100px; background-color: red;}
+        ul.active {background-color: black;} */
+        div{width: 100px; height: 100px; border: 1px solid blue;}
+        .active{background-color: slateblue;}
+    </style>
+</head>
+<body>
+    <!-- <ul class="active">
+        <li>test 중입니다.</li>
+        <li>test 중입니다.</li>
+        <li>test 중입니다.</li>
+        <li>test 중입니다.</li>
+    </ul>
+    <ol>
+        <li>test 중입니다.</li>
+        <li>test 중입니다.</li>
+        <li>test 중입니다.</li>
+        <li>test 중입니다.</li>
+    </ol> -->
+    <div class="test1">
+        test
+    </div>
+    <div class="test2">
+        test
+    </div>
+</body>
+</html>

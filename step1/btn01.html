@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menubtn</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <style>
+        .MenuBtn{
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 50;
+        }
+        .MenuBtn span{
+            display: block;
+            height: 5px;
+            background-color: black;
+            margin-bottom: 10px;
+            transition-property: transform, background-color;
+            transition-duration: 0.5s;
+        }
+        .MenuBtn.active span{
+            background-color: gray;
+        }
+        .MenuBtn.active span:nth-child(1){
+            transform: translateY(15px) rotate(45deg);
+        }
+        .MenuBtn.active span:nth-child(2){
+            background-color: transparent;
+        }
+        .MenuBtn.active span:nth-child(3){
+            transform: translateY(-15px) rotate(-45deg);
+        }
+
+        nav{
+            position: fixed;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            transition-duration: 0.5s;
+        }
+        nav ul{
+            padding: 0;
+            height: 100%;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        nav ul li{
+            font-size: 40px;
+            color: #e0e0e0;
+        }
+        nav ul li:last-child{
+            margin-bottom: 10px;
+        }
+        .MenuBtn.active + nav{
+            left: 0;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.MenuBtn').click(function(){
+                if($('.MenuBtn').hasClass('active')){
+                    $('.MenuBtn').removeClass('active');
+                }else{
+                    $('.MenuBtn').addClass('active');
+                }
+            });
+            // .toggleClass -> 가지고 있는지 없는지에 대한 여부를 확인 
+        });
+    </script>
+</head>
+<body>
+    <div class="MenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav>
+        <ul>
+            <li>MENU1</li>
+            <li>MENU2</li>
+            <li>MENU3</li>
+            <li>MENU4</li>
+            <li>MENU5</li>
+        </ul>
+    </nav>
+</body>
+</html>
