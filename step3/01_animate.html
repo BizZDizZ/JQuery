@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>효과 - animate</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                animate 사용형태
+                $(selector)animate(object);
+                $(selector)animate(object, speed);
+                $(selector)animate(object, speed, easing);
+                $(selector)animate(object, speed, easing, callback);
+
+                case1. toggle Ex(사용자 지정효과)
+                
+                animate
+                $(선택자).animate({'속성이름' : '속성값'}, 재생시간, 가감속, 콜백함수);
+
+                -중간값이 존재하는 속성을 사용
+                -예외적으로 transform속성들은 transit 플러그인을 추가로 연결
+                -재생시간은 ms단위 사용(1000 -> 1초)
+                -가감속 애니메이션은 easing 플러그인을 추가로 연결
+                    기본 1. linear 2. swing
+                    (jquery ul easing 사이트에서 검색 하면 볼 수 있음)
+                -콜백함수는 애니메이션이 종료되고 나면 실행하는 함수
+            */
+            // $('div').click(function(){
+            //     $(this).animate({left:500}, 1000, 'easeOutBack', callback)
+            // });
+            // function callback(){
+            //     alert("콜백함수");
+            // }
+            $('div').click(function(){
+                $('.slow').animate({left:500, top:500}, 1000, 'swing', callback);
+                $('.linear').animate({left:500}, 1000, 'linear', callback);
+                $('.easeOutBack').animate({left:500}, 1000, 'easeOutBack', callback);
+            });
+            function callback(){
+                $('.slow').animate({left:100}, 1000, 'swing');
+            };
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        div{width: 50px; height: 50px; background-color: red; position: relative;}
+    </style>
+</head>
+<body>
+    <div class="slow"></div>
+    <div class="linear"></div>
+    <div class="easeOutBack"></div>
+</body>
+</html>

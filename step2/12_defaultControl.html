@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본이벤트와 이벤트 전달</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                preventDefault() - 기본 이벤트 제거
+                기본값 방지
+                stopPropagation - 이벤트전달제거
+                전파 중지 (버블링 방지)
+            */
+            // $('a').click(function(e){
+            //     $(this).css('background-color', 'blue')
+            //     e.preventDefault();
+            // });
+            // $('h1').click(function(){
+            //     $(this).css('background-color', 'red');
+            // })
+            /*
+                a태그를 클릭하면 a를 데리고 있는 h1에도 이벤트가 발생된다.
+                그래서 a태그가 가지고 있는 이벤트를 제거함
+            */
+            $('.container01').click(function(e){
+                alert('1번 div');
+                e.stopPropagation();
+            });
+            $('.container02').click(function(e){
+                alert('2번 div');
+                e.stopPropagation();
+            });
+            $('.container03').click(function(e){
+                alert('3번 div');
+                e.stopPropagation();
+            });
+        });
+    </script>
+    <style>
+        a{font-size: 50px;}
+        .container01{width: 300px; height: 300px; background-color: beige;}
+        .container02{width: 200px; height: 200px; background-color: coral;}
+        .container03{width: 100px; height: 100px; background-color: chocolate;}
+    </style>
+</head>
+<body>
+    <h1><a href="http://google.co.kr">google</a></h1>
+    <div class="container01">
+        <div class="container02">
+            <div class="container03">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
