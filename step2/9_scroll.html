@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+         /*
+            scroll 
+            스크롤바가 이동할때에 이벤트를 발생시킬수있다.
+            강제적으로 스크롤이벤트를 발생시킬수도 있다.
+            .scrollLeft() - 선택한 요소 집합의 첫 번째 요소의 수평 스크롤바의 위치를 얻거나,
+                            선택된 요소의 수평 스크롤 바의 위치를 인수로 전달받은 값으로 설정합니다.
+            .scrollTop() - 선택한 요소 집합의 첫 번째 요소의 수직 스크롤 바의 위치를 얻거나,
+                            선택된 요소의 수직 스크롤 바의 위치를 인수로 전달받은 값으로 설정합니다.
+        */
+        $(document).ready(function(){
+            $('.scrollTest').scroll(function(){
+                $('span').html("Top = " + $('.scrollTest').scrollTop() + '<br>' + "Left = " + $('.scrollTest').scrollLeft());
+            });
+
+            $('button').click(function(){
+                $('.scrollTest').scrollTop(20).scrollLeft(1000);
+            });
+       });
+    </script>
+    <style>
+        body{height: 10000px; margin: 0; padding: 0;}
+        .scrollTest { width: 200px; height: 200px; overflow: scroll; }
+        .scrollTest p{white-space: nowrap;}
+        span{display: block;}
+    </style>
+</head>
+<body>
+    <div class="scrollTest">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        </p>
+        <p>Rerum vero dolore odio quasi inventore autem modi voluptate nihil dicta, </p>
+        <p>cumque asperiores illum quo sunt nostrum laboriosam ullam quas, quidem amet.</p>
+        <p>Lorem ipsum dolor </p>
+        <p>amet consectetur adipisicing elit. </p>
+        <p>consectetur adipisicing elit. </p>
+        <p>Rerum vero dolore odio quasi inventore</p>
+    </div>
+    <button>Scroll 이동</button>
+    <span></span>
+</body>
+</html>

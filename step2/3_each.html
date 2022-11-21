@@ -7,11 +7,96 @@
     <title>jQuery를 사용한 배열 관리</title>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
+        /*
+            ? 기본사칙(숫자열) 연산자
+            * +, -, *, / 나누기, % 나머지, () 우선
+            
+            ? 문자열 연산자
+            * + 문자열을 합친다.
+            ? 복합 대입 연산자		
+            * += 기존 변수의 값에 값을 더함 , -= 기존 변수의 값에 값을 뺌
+            * *= 기존 변수의 값에 값을 곱함 , /= 기존 변수의 값에 값을 나눔
+            * %= 기존 변수의 값에 나머지를 구함. 	
+            * ex> a = a + 10; > a += 10;
+            ? 증감 연산자
+            * ++ 1씩 증가, -- 1씩 감소
+            ? 조건비교 연산자
+            * >= 좌변이 우변보다 크거나 같다.
+            * <= 우변이 좌변보다 크거나 같다.
+            * > 좌변이 크다.
+            * < 우변이 크다.
+            * == 좌변과 우변이 같다.
+            * != 좌변과 우변이 다르다.
+            
+            ? 논리 연산자
+            * &&(곱) 그리고, ||(합, verticalBar) 이거나
+            
+            ? 논리 부정연산자
+            * !
+            * ex>
+            alert(!true);
+            alert(!false);
+            참을 거짓으로, 거짓을 참으로 바꾼다.
+            ? 접근 연산자
+            * .
+        */
+        /*
+            .each 메소드는 선택한 요소가 여러 개일 때, 각각에 대하여 반복하여 함수를 실행시킵니다.
+        */
+        $(document).ready(function(){
+        //변수 선언
+        // var array = [1,2,3,4]
+        // for(var i = 0; i < array.length; i++){
+        //     alert(array[i]);
+        // }
 
-        
+        // var output = '';
+        // $.each(array, function(index){
+        //     // console.log('index = ' + index);
+        //     output += '<h1>' + index + '</h1>';
+        //     $('body').html(output);
+        // });
+
+        // var array2 = [
+        //     { name: 'naver', link: 'http://www.naver.com' },
+        //     { name: 'daum', link: 'http://www.daum.net' },
+        //     { name: 'google', link: 'http://www.google.com' },
+        //     { name: 'nate', link: 'http://www.nate.com' }
+        // ]
+        // var output2 = '';
+        // $.each(array2, function(index, item){
+        //     // console.log('index = ' + index);
+        //     // console.log('item =' + item);
+        //     // console.log($(this)[0].name);
+        //     //출력변수
+        //     //문자열 생성
+        //     output2 += '<a href=" ' + array2[index].link + '">';
+        //     output2 += '<h1>' + item.name + '</h1>';
+        //     output2 += '</a>';
+        //     $('body').html(output2);
+            
+        // });
+
+        var i = 1
+        $('div').each(function(){
+            $(this).addClass('bg' + i);
+            i = i + 1
+        });
+
+       });
     </script>
+    <style>
+        .bg1 { background-color: red; }
+        .bg2 { background-color: orange; }
+        .bg3 { background-color: yellow; }
+        .bg4 { background-color: green; }
+    </style>
 </head>
 <body>
+    <div><input type="checkbox" name="a">  test1</div>
+    <div><input type="checkbox" name="a">  test2</div>
+    <div><input type="checkbox" name="a">  test3</div>
+    <div><input type="checkbox" name="a">  test4</div>
     
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 크기</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        /*  
+            width() , height() - 순수 element의 크기
+            innerWidth() , innerHeight() - 순수 element의 크기 + padding
+            outerWidht() , outerHeight() - 순수 element의 크기 + padding + border
+            outerWidth(true) , outerHeight(true) - 순수 element의 크기 + padding + border + margin
+        */
+        $(document).ready(function(){
+        //     console.log('width() = ' + $('.width').width());
+        //     console.log('.innerWidth() = ' + $('.innerWidth').innerWidth());
+        //     console.log('.innerHeight() = ' + $('.innerHeight').innerHeight());
+        //     console.log('.outerWidth() = ' + $('.outerWidth').outerWidth());
+        //     console.log('.outerHeight() = ' + $('.outerHeight').outerHeight());
+        //     console.log('.outerWidthTrue() = ' + $('.outerWidthTrue').outerWidth(true));
+        //     console.log('.outerHeightTrue() = ' + $('.outerHeightTrue').outerHeight(true));
+            $('div').click(function(){
+                console.log('document height = ' + $(document).height());
+                console.log('document width = ' + $(document).width());
+            });
+        });
+
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        div {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="width">width()</div>
+    <div class="innerWidth">innerWidth()</div>
+    <div class="outerWidth">outerWidth()</div>
+    <div class="outerWidthTrue">outerWidth(true)</div>
+    <br>
+    <div class="height">height()</div>
+    <div class="innerHeight">innerHeight()</div>
+    <div class="outerHeight">outerHeight()</div>
+    <div class="outerHeightTrue">outerHeight(true)</div>
+</body>
+</html>

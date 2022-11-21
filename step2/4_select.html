@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 선택</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        /*
+            $('선택자').parent()           - 선택자의 부모요소
+
+            $('선택자').prev()             - 선택자의 이전요소
+            $('선택자').next()             - 선택자의 다음요소
+
+            $('선택자').children('자식요소') - 선택자의 자식요소
+            $('선택자').fine('후손요소')     - 선택자의 후손요소
+
+            $('선택자').not(선택자2)
+            - 선택자 중에서 선택자2가 아닌것
+        */
+
+        $(document).ready(function(){
+            // $('.list3').parent().css('backgroundColor', 'red');
+            // $('.list3').prev().css({
+            //     'backgroundColor' : '#333',
+            //     'color' : 'white'
+            // })
+            // $('.list3').next().css({
+            //     'backgroundColor' : '#333',
+            //     'color' : 'white'
+            // })
+            // $('ul').children('li:nth-child(3)').css('display','none');
+            // $('div').find('li').css('color','red');
+            // $('li').not('.list3').css('color','red');
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <!-- <ul>
+            <li class="list1">Menu1</li>
+            <li class="list2">Menu2</li>
+            <li class="list3">Menu3</li>
+            <li class="list4">Menu4</li>
+        </ul>
+        <h1>
+            header
+        </h1> -->
+
+        <a href=""></a>
+        <a href="" class="test"></a>
+        <a href=""></a>
+        <a href="">
+            <a href="" class="test"></a>
+            <a href="" class="test"></a>
+            <a href="" class="test"></a>
+            <a href="" class="test"></a>
+        </a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href="" class="test"></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href="" class="test"></a>
+        <a href=""></a>
+        <a href="" class="test"></a>
+        <a href=""></a>
+    </div>
+    <script>
+        // alert($('a').filter('.test').length + '입니다.');
+        alert($('div').find('.test').length + '입니다.');
+    </script>
+</body>
+</html>

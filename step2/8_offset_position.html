@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 위치</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                position() - 부모노드를 기준으로한 지역좌표 위치 (상대좌표)
+                offset() - 최상위 노드인 document에서부터의 위치 (절대좌표)
+            */
+           $('h1').html('position = ' + $('h1').position().top + '<br>' + 'offset = ' + $('h1').offset().top);
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        div{height: 200px; width: 100%; position: absolute; top: 1000px; background-color: salmon;
+            padding-top: 10px; border-top: 1px; box-sizing: border-box; margin-bottom: 50px;}
+
+        h1{position: absolute; bottom: 0; left: 0; height: 100px; background-color: brown;}
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Header - 0</h1>
+    </div>
+</body>
+</html>
