@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상대적 애니메이션 그리고 현재상태를 기준으로 하는 애니메이션</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                상대적 애니메이션
+
+                animate로 제어할 수 있는 속성
+                opacity, height, top, width, left, margin, padding, bottom
+
+                현재상태를 기준으로 상대적인 애니메이션
+            */
+            $('div').click(function(){
+                var width = $(this).css('width');
+                var height = $(this).css('height');
+            //  console.log(width);
+            //  $(this).animate({
+            //      width: parseInt(width) + 50,
+            //      height: parseInt(height) + 50
+            //  },'swing');
+                $(this).animate({
+                    width: '+=50',
+                    height: '+=50'
+                },'swing');
+            });
+        });
+    </script>
+    <style>
+        div{width: 50px; height: 50px; background-color: orange;}
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

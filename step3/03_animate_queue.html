@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 큐</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                애니메이션 큐
+                $('div').click(function(){
+                    $(this).animate({
+                        left: '+=60'
+                    }, 2000).animate({
+                        width: '+=60'
+                    },2000).animate({
+                        height: '+=60'
+                    },2000)
+                });
+
+                애니메이션 큐를 제거하는 메소드 clearQueue()
+            */
+            $('div').click(function(){
+                $(this).animate({
+                    left: '+=60'
+                },2000).animate({
+                    width: '+=60'
+                },2000).animate({
+                    height: '+=60'
+                },2000)
+            });
+            // $('span').click(function(){
+            //     $('div').clearQueue();
+            // });
+
+            setTimeout(function(){
+                $('div').clearQueue();
+                $('div').hide();
+            },3000);
+            //setTimeout(실행할 내용, 시간)은 특정시간이 지나면 한번, 특정 행위를 실행하게끔 하는 자바스크립트 함수
+            //setInterval(실행할 내용 ,시간)은 지정한 시간이 지날때마다 그 행위를 실행한다.
+        });
+    </script>
+    <style>
+        div{width: 50px; height: 50px; background-color: orange; position: relative;}
+    </style>
+</head>
+<body>
+    <div></div>
+    <span>클릭</span>
+</body>
+</html>

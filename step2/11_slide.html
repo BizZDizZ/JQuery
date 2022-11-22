@@ -22,12 +22,13 @@
             align-items: center;
             font-size: 100px;
         }
-        header{background-color: blue;}
-        footer{background-color: green;}
-        ul{list-style: none;}
-        a{text-decoration: none; color: black;}
 
-        .menuArea{
+        header {background-color: blue;}
+        footer {background-color: green;}
+        ul {list-style: none;}
+        a { text-decoration: none; color: black; }
+
+        .menuArea {
             position: fixed;
             left: 0;
             top: 0;
@@ -36,29 +37,37 @@
             background-color: white;
             font-size: 16px;
         }
-        .menuArea > div{
+
+        .menuArea > div {
             max-width: 1200px; margin: 0 auto; height: 100%;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .menuArea > div nav{
+
+        .menuArea > div nav {
             height: 100%;
         }
-        .menuArea > div nav ul{
+
+        .menuArea > div nav > ul {
             height: 100%; display: flex;
         }
-        .menuArea > div nav > ul > li{
-            width: 100%; height: 100%; position: relative;
+
+        .menuArea > div nav > ul > li {
+            width: 100px; height: 100%; position: relative;
         }
-        .menuArea > div nav > ul > li > a{
+
+        .menuArea > div nav > ul > li > a {
             display: flex; height: 100%; align-items: center; justify-content: center;
         }
-        .menuArea > div nav ul li ul{
+
+        .menuArea > div nav ul li ul {
             position: absolute; left: 0; top: 100%; width: 100%;
             text-align: center; background-color: white;
             border-width: 0 1px 1px; border-style: solid; border-color: rgba(0,0,0,0.2);
         }
-        .menuAtea > div nav ul li ul li a{display: block; padding: 10px 0;}
-        .menuArea > div nav ul li ul{display: none;}
+
+        .menuArea > div nav ul li ul li a{display: block; padding: 10px 0;}
+
+        .menuArea > div nav ul li ul {display: none;}
     </style>
 </head>
 <body>

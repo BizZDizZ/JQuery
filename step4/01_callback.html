@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback 함수 다루기</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+
+    </script>
+    <style>
+        .container{
+            position: absolute; top: 50%; left: 50%;
+            width: 130px; height: 40px;
+            text-align: center;
+        }
+        #button{
+            outline: none;
+            width: 130px; height: 40px; border-radius: 40px;
+            background-color: white; color: #1ecd97;
+            border: 2px solid #1ecd97;
+        }
+        #button:hover{
+            color: white; background: #1ecd97;
+        }
+        #button:after{
+            content: "SUBMIT NOW";
+        }
+        .onclick{
+            width: 40px; border-color: #bbb; border-width: 3px;
+            border-left-color: #1ecd97;
+        }
+        @keyframes rotating{
+            from{
+                transform: rotate(0deg);
+            }to{
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="button"></button>
+        <div class="onclick"></div>
+    </div>
+</body>
+</html>
