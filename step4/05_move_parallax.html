@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>move parallax</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('header').mousemove(function(e){
+                var mouseX = (1 - (e.offsetX / $('header').width()) * 2);//header의 width 값에 곱하기 2
+                var mouseY = (1 - (e.offsetY / $('header').height()) * 2);//header의 width 값에 곱하기 2
+                //console.log(1 - (e.offsetX / $('header').width()) * 2);
+
+                $('header div.mainBG img').each(function(){
+                    $(this).css({
+                        'transform' : 'translateX(' + mouseX * $(this).attr('data-movePX') + 'px) translateY(' +
+                        mouseY * $(this).attr('data-movePX') + 'px)'
+                    });
+                });
+            });
+            mainBG(70);
+
+            function mainBG(count){
+                var headerBG = $('header div.mainBG');
+                var headerWidth =  $('header div.mainBG').width();//header div.mainBG width
+                var headerHeight = $('header div.mainBG').height();//header div.mainBG height
+
+                //기준되는 값은 0 , 1씩 증가하며 위에 만들어놓은 count값보다 작을 경우 반복문
+                for(var i = 0; i < count; i++){
+                    var starImg = document.createElement('img');
+                    var movePX = Math.random() * 50;
+                    var starWidth = (Math.random() + 1) * 25;
+                    var starLeft = Math.random() * headerWidth;
+                    var starTop = Math.random() * headerHeight;
+                    //Math.random(); -> 0 =< Math.random() * 50 < 50 수많은 소숫점이 발행되어 정수로만 알고싶을때 floor
+                    //변수 이름 정해서 Math.random()을 이용해 위에 만들어놓은 headerWidth,headerHight 값을 투여하여 css에 적용시켜보기
+
+
+                    if(i % 2 == 0){
+                        $(starImg).attr({
+                            'src':'images/stars.png',
+                            'data-movePX' : movePX
+                        });
+                    }else{
+                        $(starImg).attr({
+                            'src':'images/moon.png',
+                            'data-movePX' : movePX
+                        });
+                    }
+
+                    $(starImg).css('width' , starWidth);
+                    $(starImg).css('left' , starLeft);
+                    $(starImg).css('top' , starTop);
+
+                    headerBG.append(starImg);
+                }
+            }
+        });
+    </script>
+    <style>
+        body{margin: 0; padding: 0;}
+        header,section,footer{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+        }
+
+        header{position: relative; background-color: black; color: white; overflow: hidden;}
+        header .mainBG{position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+        header .mainBG img{position: absolute; pointer-events: none;}
+    </style>
+</head>
+<body>
+    <header>
+        header
+        <div class="mainBG"></div>
+    </header>
+    <section>section</section>
+    <footer>footer</footer>
+</body>
+</html>

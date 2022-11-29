@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventPosition</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            var posX, posY;
+            $('ul li').click(function(e){
+                posX = e.offsetX;
+                posY = e.offsetY;
+
+                var ripples = $('<span></span>');
+                $(this).append(ripples);
+                ripples.css({
+                    'left': posX,
+                    'top': posY
+                })
+            });
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        div{height: 100vh; display: flex; justify-content: center; align-items: center;}
+        div > ul{list-style: none; width: 1200px; display: flex; flex-wrap: wrap;}
+        div > ul li{
+            flex: 1; min-width: 20%; height:100px;
+            border: 1px solid #333; border-radius: 8px;
+            overflow: hidden; position: relative;
+        }
+        div > ul li span{
+            position: absolute; background-color: lightblue;
+            transform: translate(-50%, -50%);
+            border-radius: 100%;
+            animation-name: animate;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+        }
+        @keyframes animate{
+            0%{width: 0; height: 0; opacity: 0.5;}
+            100%{width: 200%; padding-top: 200%; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                list - 1                
+            </li>
+            <li>
+                list - 2                
+            </li>
+            <li>
+                list - 3                
+            </li>
+            <li>
+                list - 4                
+            </li>
+            <li>
+                list - 5                
+            </li>
+            <li>
+                list - 6                
+            </li>
+            <li>
+                list - 7                
+            </li>
+            <li>
+                list - 8                
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -5,45 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>callback 함수 다루기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script>
-
-    </script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
     <style>
         .container{
-            position: absolute; top: 50%; left: 50%;
-            width: 130px; height: 40px;
+            position: absolute;
+            top: 48.2%;
+            left: 46.7%;
+            width: 130px;
+            height: 40px;
             text-align: center;
         }
-        #button{
+
+        button{
             outline: none;
-            width: 130px; height: 40px; border-radius: 40px;
-            background-color: white; color: #1ecd97;
+            width: 130px;
+            height: 40px;
+            border-radius: 40px;
+            background-color: white;
+            color: #1ecd97;
             border: 2px solid #1ecd97;
+            transition: all 0.25s ease;
         }
-        #button:hover{
-            color: white; background: #1ecd97;
+
+        button:hover{
+            color: white;
+            background: #1ecd97;
         }
-        #button:after{
+
+        button::after{
             content: "SUBMIT NOW";
         }
-        .onclick{
-            width: 40px; border-color: #bbb; border-width: 3px;
+
+        .onclic{
+            width: 40px;
+            border-color: #bbb;
+            border-width: 3px;
             border-left-color: #1ecd97;
+            font-size: 0;
+            animation: rotating 2s 0.25s linear infinite;
         }
+
+        .onclic:hover{
+            background-color: white;
+        }
+
         @keyframes rotating{
             from{
                 transform: rotate(0deg);
-            }to{
+            }
+            to{
                 transform: rotate(359deg);
             }
         }
+
+        .finclic {
+            background-color: #1ecd97;
+            color: white;
+            font-size: 13px;
+        }
+
+        .finclic:after{
+            font-family: 'Material Icons';
+            content: "done";
+        }
+        
     </style>
 </head>
 <body>
     <div class="container">
-        <button id="button"></button>
-        <div class="onclick"></div>
+        <button></button>
     </div>
+
+    <script>
+        $('button').click(function(){//button 클릭시 함수실행
+            $(this).addClass('onclic', finclic);//클릭된 button에 onclic클래스 추가
+        });
+
+        function finclic(){
+            setTimeout(function(){//setTimeout(실행할 함수, 시간) 한번 실행시키기(2.25초 동안)
+                $('button').removeClass('onclic');//button에 추가된 onclic 클래스를 제거한후
+                $('button').addClass('finclic');//finclic 클래스를 추가
+            },2250);
+        }
+
+        function callback(){
+            setTimeout(function(){
+                $('button').removeClass('finclic');
+            },2250);
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 기준 좌표알아보기</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                clientX, clientY 브라우저 화면 기준 마우스 위치 (스크롤영역 제외)
+                offsetX, offsetY 이벤트가 일어난 요소기준으로 일어나는 위치
+                pageX, pageY 전체 페이지를 기준으로 현재 마우스 위치
+                screenX, screenY 모니터 화면 전체 기준 마우스 위치(스크롤 영역 포함)
+            */
+
+            $('figure').mousemove(function(e){
+                // console.log('clientX = ' + e.clientX + 'clientY = ' + e.clientY);
+                //console.log('offsetX = ' + e.offsetX + 'offsetY = ' + e.offsetY);
+                //console.log('pageX = ' + e.pageX + 'pageY = ' + e.pageY);
+                console.log('screenX = ' + e.screenX + 'screenY = ' + e.screenY);
+            });
+        });
+    </script>
+    <style>
+        body {margin: 0; padding: 0;}
+        figure{
+            width: 300px;
+            margin: 300px auto;
+        }
+    </style>
+</head>
+<body>
+    <figure>
+        <img src="http://via.placeholder.com/200x200" alt="">
+        <figcaption>title</figcaption>
+    </figure>
+</body>
+</html>
