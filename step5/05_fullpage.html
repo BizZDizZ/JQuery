@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fullpage</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            //for문 사용 i 최초값은 0, 1씩 증가, i 범위는 data-event='fullpage'의 length
+            for(var i = 0; i < $('[data-event="fullpage"]').length; i++){
+                $('ol').append('<li>' + (i+1) + ' page</li>');
+            }
+            //ol li가 eq값을 받아 active class를 추가
+            $('ol li').eq(0).addClass('active');
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        header, section, footer{
+            height: 100vh; display: flex;
+            justify-content: center; align-items: center; font-size: 130px;
+        }
+        header{background-color: teal;}
+        section:nth-of-type(2){background-color: orange;}
+        footer{background-color: blueviolet;}
+        body{overflow: hidden;}
+        ol{margin: 0; padding: 0; list-style: none; position: fixed; right: 10px; top: 50%;}
+        ol li{text-indent: -9999px; width: 10px; height: 10px; background-color: rgba(0,0,0,0.5); border-radius: 100%;}
+        ol li:not(:last-child){margin-bottom: 10px;}
+        ol li.active{background-color: magenta;}
+    </style>
+</head>
+<body>
+    <div>
+        <header data-event="fullpage">header</header>
+        <section data-event="fullpage">section</section>
+        <section data-event="fullpage">section</section>
+        <section data-event="fullpage">section</section>
+        <footer data-event="fullpage">footer</footer>
+    </div>
+    <ol>
+        <li class="active">1 page</li>
+        <li>2 page</li>
+        <li>3 page</li>
+    </ol>
+</body>
+</html>

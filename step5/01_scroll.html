@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                var scrolltop = $(window).scrollTop();
+                var sectionoffsettop = $('section').offset().top;
+                var windowHeight = $(window).height();
+        
+
+                console.log(scrolltop > sectionoffsettop - windowHeight);
+                //console.log($('section').offset().top);
+                //console.log('offsetTop-scrollTop = ' + $('section').offset().top - ($(window).scrollTop()));
+                //$('section').offset().top
+                //console.log('offsetTop = ' + $('section').offset().top);
+
+                //if($(window).scrollTop() > $('section').offset().top){
+                //    $('section span').addClass('active');
+                //}
+            });
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        header, section, footer{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+        }
+
+        header{background-color: tomato;}
+        footer{background-color: green;}
+        section span{transform: translateX(-200px); opacity: 0;}
+        section span.active{transform: translateX(0px); opacity: 1;}
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <section>
+        <span>section</span> 
+    </section>
+    <footer>footer</footer>
+</body>
+</html>

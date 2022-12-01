@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>progressbar</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+    <script>
+        $(document).ready(function(){
+            var scrollprogress = 0;
+            var rotateValue = 0;
+            $(window).scroll(function(){
+                scrollprogress = $(window).scrollTop() / ($(document).height() - $(window).height());
+                $('.progressBar span').css('width', scrollprogress * 100 + '%');
+                //case1. 
+                //if -> scrollTop 이 section offsetTop 보다 클경우에 대한 문법을 작성해보시오.
+                //참일경우 .upBtn display block 아닐경우 .upBtn display none
+                //if($(window).scrollTop() > $('section').offset().top){
+                //    $('.upBtn').css('display','block');
+                //}else{
+                //    $('.upBtn').css('display','none');
+                //}
+
+                //case2.
+                console.log('document height' + $(document).height());
+                console.log('window height' + $(window).height());
+                console.log(scrollprogress); //0.2416547987452
+                // 변수 opacityValue 값에 scrollprogress값에 0~1 수치로 만든뒤
+                //if 문 사용하여 opacityValue 값이 0 보다 크거나 같을경우 
+                //.upBtn 이 display : block 형태로 만들기 아닐경우는 반대로 none 의 효과로 만들기
+                // var opacityValue = scrollprogress * 1
+                // // console.log('opacityValue = ' + opacityValue);
+                // if(opacityValue >= 0){
+                //     $('.upBtn').css({
+                //         'opacity' : opacityValue,
+                //         'display' : 'block'
+                //     });
+                // }else{
+                //     $('.upBtn').css({
+                //         'opacity' : 0,
+                //         'display' : 'none'
+                //     });
+                // }
+
+                rotateValue = scrollprogress * 720;
+                $('.upBtn .upBG').css('transform' , 'translate(-50%,-50%) rotate(' + rotateValue + 'deg)');
+            });
+
+            $('.progressBar').click(function(e){
+                    scrollprogress = e.clientX / $(this).width();
+                    $(window).scrollTop(
+                        ($(document).height() - $(window).height()) * scrollprogress
+                    )                    
+            });
+            //.upBtn 클릭하면 html scrollTop(0)
+            $('.upBtn').click(function(){
+                // $('html').scrollTop(0);
+                $('html').animate({scrollTop : 0});
+            });
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        header, section, footer{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+        }
+        @import url("https://fonts.googleapis.com/css2?family=Material+Icons");
+        .material-icons-outlined {font-family: 'Material Icons';}
+        .progressBar {position: fixed; left: 0; top: 0; width: 100%; height: 10px; background-color: #333;}
+        .progressBar span{display: block; width: 100%; height: 100%; background-color: skyblue;}
+        .upBtn{position: fixed; right: 50px; bottom: 50px; font-size: 50px; cursor: pointer;}
+        .upBtn .material-icons-outlined { z-index: 10;}
+        .upBtn .upBG{
+            background-color: blueviolet; position: absolute; left: 50%; top: 50%; width: 150%;
+            padding-bottom: 150%; z-index: -1; transform: translate(-50%,-50%); border-radius: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="progressBar">
+        <span></span>
+    </div>
+    <header>header</header>
+    <section>section</section>
+    <footer>
+        footer
+        <div class="upBtn">
+            <span class="material-icons-outlined">
+                arrow_upward
+                </span>
+            <span class="upBG"></span>
+        </div>
+    </footer>
+</body>
+</html>

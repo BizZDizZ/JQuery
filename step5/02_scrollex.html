@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll class</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){ //window 기준 scroll event 함수 실행
+                //scrollTop 값을 console에 찍어보기
+                // console.log('보고있는 화면의 위치 = ' + $(window).scrollTop())
+                var 보고있는화면의위치 = $(window).scrollTop();
+                var 보고있는화면의세로크기 = $(window).height();
+
+                console.log('보고있는 화면의 위치 = ' + 보고있는화면의위치);
+                console.log('보고있는 화면의 세로크기 = ' + 보고있는화면의세로크기);
+                console.log('h2 offset.top = ' + $('h2').offset().top);
+
+                $('[data-scroll]').each(function(){
+                    if(보고있는화면의위치 > $(this).offset().top - (보고있는화면의세로크기 * 0.7)){
+                        $(this).addClass('active');
+                    }else{
+                        $(this).removeClass('active');
+                    }
+                });
+            });
+            
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        header,section,footer{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+        }
+        header{background-color: tomato;}
+        footer{background-color: green;}
+        section{flex-direction: column;}
+        section > *{font-size: 100px;}
+        [data-scroll]{opacity: 0; transition: 1s;}
+        [data-scroll="leftRight"]{transform: translateX(-200px);}
+        [data-scroll="rightLeft"]{transform: translateX(200px);}
+        [data-scroll="bottomTop"]{transform: translateY(200px);}
+        [data-scroll="test"]{transform: translateX(-400px) rotate(0);}
+
+        [data-scroll].active{opacity: 1; transform: translate(0,0);}
+        [data-scroll="test"].active{transform: translateX(0px) rotate(360deg);}
+        /*
+            data-scroll 
+            1. 왼쪽에서 오른쪽
+            2. 오른쪽에서 왼쪽
+            3. 아래에서 위로
+        */
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <section>
+        <h2 data-scroll="leftRight">section</h2>
+        <div data-scroll="rightLeft">section</div>
+        <p data-scroll="bottomTop">section</p>
+        <div data-scroll="test">section</div>
+        <h3>section</h3>
+        <div data-scroll="leftRight">section</div>
+        <p>section</p>
+    </section>
+    <footer>footer</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scrolltop위치에 따라 다뤄보기</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                var scrolltop = $(window).scrollTop();
+                var windowHeight = $(window).height();
+
+                $('section div ul li').each(function(){
+                    if(scrolltop > $(this).offset().top - (windowHeight)){
+                        $(this).addClass('active');
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        header,section,footer,section>div{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+        }
+        header{background-color: tomato;}
+        footer{background-color: green;}
+        section > div ul {width: 1200px; list-style: none; display: flex; flex-wrap: wrap; gap: 20px;}
+        section > div ul li{
+            flex: 1; min-width:20%; height: 150px; border: 1px solid #333;
+            border-radius: 8px; font-size: 40px; position: relative; opacity: 0; transform: translateY(200px); transition: 1s;
+        }
+        section > div ul li:nth-child(1),
+        section > div ul li:nth-child(5){transition-delay: 0;}
+        section > div ul li:nth-child(2),
+        section > div ul li:nth-child(6){transition-delay: 0.5s;}
+        section > div ul li:nth-child(3),
+        section > div ul li:nth-child(7){transition-delay: 1s;}
+        section > div ul li:nth-child(4),
+        section > div ul li:nth-child(8){transition-delay: 1.5s;}
+        section > div ul li.active { 
+            opacity: 1; transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <section>
+        <div>
+            <ul>
+                <li>list - 1</li>
+                <li>list - 2</li>
+                <li>list - 3</li>
+                <li>list - 4</li>
+                <li>list - 5</li>
+                <li>list - 6</li>
+                <li>list - 7</li>
+                <li>list - 8</li>
+            </ul>
+        </div>
+    </section>
+    <footer>footer</footer>
+    
+</body>
+</html>
