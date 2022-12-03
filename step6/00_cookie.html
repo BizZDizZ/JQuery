@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie</title>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- jquery cookie cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            /*
+                쿠키란
+                - 클라이언트 (브라우저) 로컬에 저장되는 키와 값이 들어있는 작은 데이터 파일입니다.
+                - 사용자 인증이 유효한 시간을 명시할 수 있으며, 유효 시간이 정해지면클라이언트 (브라우저)가 종료되어도 인증이 유지된다는 특징이 있다.
+                - 클라이언트 (브라우저)의 상태 정보를 로컬에 저장했다가 참조할수있다.
+                - 클라이언트 (브라우저)에 300개까지 쿠기저장 가능, 하나의 도메인당 20개의 값만 가질 수있음.
+                - 하나의 쿠키값은 4KB 까지 저장가능하다.
+
+                - $.cookie (name : '', value:'', path : '', expires : '')
+                
+            */
+            $('.cookie_create').click(function(){
+                $.cookie('test', 'value' , {expires : 7});
+                console.log($.cookie('test'));
+            });
+
+            $('a').click(function(){
+                $.cookie('backgroundValue' , $(this).attr('data-BGColor'));
+                $.cookie('arrayNumb' , $(this).attr('data-cookieNumb'));
+            });
+        });
+    </script>
+    <style>
+        div{width: 100px; height: 100px; background-color: coral;}
+    </style>
+</head>
+<body>
+    <button class="cookie_create">쿠키생성</button>
+    <div></div>
+    <a href="01_cookie_receive.html" data-BGColor="red" data-cookieNumb="0">red 보내기</a>
+    <a href="01_cookie_receive.html" data-BGColor="blue" data-cookieNumb="1">blue 보내기</a>
+</body>
+</html>

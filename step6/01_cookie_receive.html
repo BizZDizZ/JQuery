@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie 활용하기</title>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- jquery cookie cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            var cookieArray = ['red' , 'blue']
+            var imgArray = ['star01' , 'star02'];
+
+            if($.cookie('backgroundValue') != undefined){
+                $('div').css('background-color', $.cookie('backgroundValue'));
+                // p 선택하여 cookie명 arrayNumb 사용하여 위에 만들어놓은 cookieArray 로 변경되게 하기
+                $('p').html(cookieArray[$.cookie('arrayNumb')]);
+                //img 속성값을 불러오기 imgArray 변수 이용하여 cookie명 arrayNumb에 배열을 가져와 변경시키기 
+                //img src img폴더에 있는 image가져올거고 .png
+                $('img').attr('src', './images/' + imgArray[$.cookie('arrayNumb')] +'.png');
+            }
+        });
+    </script>
+    <style>
+        div{width: 100px; height: 100px; border: 2px solid black;}
+    </style>
+</head>
+<body>
+    <div></div>
+    <p>cookie값 없음</p>
+    <img src="">
+</body>
+</html>

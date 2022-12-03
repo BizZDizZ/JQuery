@@ -8,28 +8,79 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            //for문 사용 i 최초값은 0, 1씩 증가, i 범위는 data-event='fullpage'의 length
-            for(var i = 0; i < $('[data-event="fullpage"]').length; i++){
-                $('ol').append('<li>' + (i+1) + ' page</li>');
+            //for문을 사용하여 i 최초값은 0 이며, 1씩 증가하고 i의 범위는 data-event='fullpage'의 length 값이다
+            // 이값들이 참이되는 상황에서 ol안에 li 요소 추가
+            //li 는 i 값 기준으로 ex) <li> 1 page </li> 라는 메세지가 보이도록 추가하기.
+            for(var i=0; i < $('[data-event="fullpage"]').length; i++){
+                $('ol').append('<li>' + (i + 1) + 'page </li>')
             }
-            //ol li가 eq값을 받아 active class를 추가
+            //ol li 가 eq값을 받아 active Class 를 추가
             $('ol li').eq(0).addClass('active');
+
+            //mousewheel(사파리,크롬,오페라까지 지원) DOMMouseScroll(파이어폭스 지원)  on(두매개체를 같이 사용하기위함)
+            $('[data-event="fullpage"]').on('mousewheel DOMMouseScroll',function(e){
+                var delta = e.originalEvent.wheelDelta; // 마우스 스크롤 방향 감지 이벤트
+                if(delta > 0){
+                    //마우스 휠을 위로
+                    // console.log($(this).prev().offset());
+                    if($(this).prev().offset() != undefined){
+                        $('html').stop().animate({scrollTop : $(this).prev().offset().top},1000);
+                        // ol li active 제거
+                        $('ol li').removeClass('active');
+                        // ol li 가지고 있는 eq 값을 사용하여 이전요소에 index값인 곳에 active 클래스를 추가
+                        $('ol li').eq($(this).prev().index()).addClass('active');
+                    }
+                }else{
+                    //마우스 휠을 아래로
+                    if(!($(this).next().offset() == undefined)){
+                        $('html').stop().animate({scrollTop : $(this).next().offset().top},1000);
+                        $('ol li').removeClass('active');
+                        $('ol li').eq($(this).next().index()).addClass('active');
+                    }
+                }
+
+                $('ol li').click(function(){
+                    //removeClass active
+                    $('ol li').removeClass('active');
+                    //active class를 추가
+                    $(this).addClass('active');
+                    // $('ol li').eq($(this).next().index()).addClass('active');
+                    $('html').stop().animate({scrollTop : $('[data-event="fullpage"]').eq($(this).index()).offset().top},1000);
+                });
+
+            });
+            // 스마트폰의 브라우저 : 마우스 이벤트와는 별도로 터치 이벤트를 지원함
+            // touchstart : 터치가 시작될때
+            // touchend : 터치가 끝날떄
+            // touchmove : 터치한 상태로 이동할때
+            // touchenter : 터치한 요소의 경계외부에서 내부로 이동할때
+            // touchleave : 터치한 요소의 경계내부에서 외부로 이동할때
+
+            $('[data-event="fullpage"]').on('touchstart', function(){
+                console.log('1');
+            });
+            $('[data-event="fullpage"]').on('touchend', function(){
+                console.log('2');
+            });
         });
     </script>
     <style>
         *{margin: 0; padding: 0;}
-        header, section, footer{
-            height: 100vh; display: flex;
-            justify-content: center; align-items: center; font-size: 130px;
+        header, section,footer{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
         }
         header{background-color: teal;}
-        section:nth-of-type(2){background-color: orange;}
+        section:nth-of-type(2) {background-color: cadetblue;}
         footer{background-color: blueviolet;}
         body{overflow: hidden;}
         ol{margin: 0; padding: 0; list-style: none; position: fixed; right: 10px; top: 50%;}
         ol li{text-indent: -9999px; width: 10px; height: 10px; background-color: rgba(0,0,0,0.5); border-radius: 100%;}
-        ol li:not(:last-child){margin-bottom: 10px;}
-        ol li.active{background-color: magenta;}
+        ol li:not(:last-child) { margin-bottom: 10px;}
+        ol li.active{background-color: purple;}
     </style>
 </head>
 <body>
@@ -41,9 +92,9 @@
         <footer data-event="fullpage">footer</footer>
     </div>
     <ol>
-        <li class="active">1 page</li>
+        <!-- <li class="active">1 page</li>
         <li>2 page</li>
-        <li>3 page</li>
+        <li>3 page</li> -->
     </ol>
 </body>
 </html>
