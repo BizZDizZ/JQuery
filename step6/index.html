@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 사이트잡아보기</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('header > .wrap nav > ul > li').hover(function(){
+                $(this).find('ul').stop().slideToggle(500);
+            });
+
+            $('.upBtn').click(function(){
+                $('html').animate({scrollTop : 0});
+            });
+
+            $('.tabMenu .wrap ul li').click(function(){
+                $('.tabMenu .wrap ul li').removeClass('active');
+                $(this).addClass('active');
+                $('.tabMenu .wrap ol li').removeClass('active');
+                $('.tabMenu .wrap ol li').eq($(this).index()).addClass('active');
+            });
+
+            var exVlaue = false;
+            $(window).scroll(function(){
+                var scrolltop = $(window).scrollTop();
+                var basicOffset = $('.basic ul').offset().top - 100
+                // console.log(scrolltop);
+                // console.log($('.scrollTop .wrap ul li').offset().top);
+                $('.scrollTop .wrap ul li').each(function(){
+                    if(scrolltop > $(this).offset().top - 1000){
+                        $(this).addClass('active');
+                    }else{
+                        $(this).removeClass('active');
+                    }
+                });
+
+                if(!exVlaue){
+                    if(scrolltop >= basicOffset){
+                        var progress = $('.basic ul li span').attr('data-rotate');
+                        $({percent : 0}).animate({percent : 80},{
+                            duration : 1500,
+                            // progress : 진행중할일   complate : 끝나고 할일
+                            progress:function(){
+                                var now = this.percent;
+                                // console.log(now);
+                                $('.animate').text(Math.floor(now));
+                            }
+                        });
+                        exVlaue = true;
+                    }
+                }
+            });
+
+            $('.accordion .wrap ul li span').click(function(){
+                $(this).next().slideToggle();
+                $(this).next().siblings('p').slideUp();
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <h1>Logo</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Menu1</a>
+                        <ul>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Menu2</a>
+                        <ul>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Menu3</a>
+                        <ul>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Menu4</a>
+                        <ul>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Menu5</a>
+                        <ul>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                            <li><a href="#">subMenu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="upBtn">
+            <span class="material-symbols-outlined">expand_less</span>
+        </div>
+    </header>
+    <section class="basic">
+        <div class="wrap">
+            <h2>Lorem ipsum dolor sit amet consectetur</h2>
+            <a href="#">Lean more</a>
+        </div>
+        <ul>
+            <li>
+                <span class="material-symbols-outlined">person</span>
+                <span class="animate" data-rotate="80"></span>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">book</span>
+                <span class="animate" data-rotate="80"></span>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span class="animate" data-rotate="80"></span>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">trending_up</span>
+                <span class="animate" data-rotate="80"></span>
+            </li>
+        </ul>
+    </section>
+    <section class="tabMenu">
+        <div class="wrap">
+            <h2>Lorem ipsum</h2>
+            <ul>
+                <li class="active">button 0</li>
+                <li>button 1</li>
+                <li>button 2</li>
+                <li>button 3</li>
+            </ul>
+            <ol>
+                <li class="active">content 0</li>
+                <li>content 1</li>
+                <li>content 2</li>
+                <li>content 3</li>
+            </ol>
+        </div>
+    </section>
+    <section class="scrollTop">
+        <div class="wrap">
+            <h2>Lorem ipsum <b>dolor sit amet consectetur adipisicing elit.</b></h2>
+            <ul>
+                <li>
+                    <dl><img src="http://via.placeholder.com/350x300" alt="이미지"></dl>
+                    <dt>test</dt>
+                    <dd>consectetur adipisicing elit.</dd>
+                </li>
+                <li>
+                    <dl><img src="http://via.placeholder.com/350x300" alt="이미지"></dl>
+                    <dt>test</dt>
+                    <dd>consectetur adipisicing elit.</dd>
+                </li>
+                <li>
+                    <dl><img src="http://via.placeholder.com/350x300" alt="이미지"></dl>
+                    <dt>test</dt>
+                    <dd>consectetur adipisicing elit.</dd>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="accordion">
+        <div class="wrap">
+            <h2>Lorem ipsum <b>dolor sit amet consectetur adipisicing elit.</b></h2>
+            <ul>
+                <li>
+                    <span>Questions?</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </li>
+                <li>
+                    <span>Questions?</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </li>
+                <li>
+                    <span>Questions?</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </li>
+                <li>
+                    <span>Questions?</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <div class="wrap">
+            <h2>Logo</h2>
+            <p>Copyright © 2022 kmong Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
